@@ -1,21 +1,21 @@
 class AddTranslationTables < ActiveRecord::Migration
   def self.up
-    Product.create_translation_table! :name => :string, :description => :text, :meta_description => :text, :meta_keywords => :text
-    Property.create_translation_table! :presentation => :string
-    Prototype.create_translation_table! :name => :string
-    Taxonomy.create_translation_table! :name => :string
-    Taxon.create_translation_table! :name => :string, :description => :text
-    OptionType.create_translation_table! :presentation => :string
-    OptionValue.create_translation_table! :presentation => :string
+    Spree::Product.create_translation_table! :name => :string, :description => :text, :meta_description => :text, :meta_keywords => :text
+    Spree::Property.create_translation_table! :presentation => :string
+    Spree::Prototype.create_translation_table! :name => :string
+    Spree::Taxonomy.create_translation_table! :name => :string
+    Spree::Taxon.create_translation_table! :name => :string, :description => :text
+    Spree::OptionType.create_translation_table! :presentation => :string
+    Spree::OptionValue.create_translation_table! :presentation => :string
   end
 
   def self.down
-    Product.drop_translation_table!
-    Property.drop_translation_table!
-    Prototype.drop_translation_table!
-    Taxonomy.drop_translation_table!
-    Taxon.drop_translation_table!
-    OptionType.drop_translation_table!
-    OptionValue.drop_translation_table!
+    Spree::Product.drop_translation_table!
+    Spree::Property.drop_translation_table!
+    Spree::Prototype.drop_translation_table!
+    Spree::Taxonomy.drop_translation_table!
+    Spree::Taxon.drop_translation_table!
+    Spree::OptionType.drop_translation_table!
+    Spree::OptionValue.drop_translation_table!
   end
 end

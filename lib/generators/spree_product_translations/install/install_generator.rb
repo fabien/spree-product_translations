@@ -11,7 +11,7 @@ module SpreeProductTranslations
       end
 
       def add_migrations
-        run 'rake railties:install:migrations FROM=spree_product_translations'
+        rake 'railties:install:migrations FROM=spree_product_translations_engine'
       end
 
       def run_migrations
