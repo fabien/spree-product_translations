@@ -58,10 +58,20 @@ module SpreeProductTranslations
         accepts_nested_attributes_for :translations
       end
 
+      [Spree::Product, Spree::ProductProperty, Spree::Property, Spree::Prototype, Spree::Taxonomy, Spree::Taxon, Spree::OptionType, Spree::OptionValue].each do |model|
+        translated_model = model.translation_class
+        if translated_model
+          translated_model.send(:attr_accessible, :locale)
+          model.translated_attribute_names.each do |attribute|
+            translated_model.send(:attr_accessible, attribute)
+          end
+        end
+      end
+
       # Enable I18n fallbacks
       require 'i18n/backend/fallbacks'
     end
-
+    
     config.to_prepare &method(:activate).to_proc
   end
 end

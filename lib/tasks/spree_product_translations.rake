@@ -22,60 +22,60 @@ namespace :spree do
         end
 
         puts "updating product names, description, meta_keywords and meta_description..."
-        Product.all.each do |p|
-          p.name = fetch_first_row("select products.name from products where products.id=#{p.id}")
-          p.description = fetch_first_row("select products.description from products where products.id=#{p.id}")
-          p.meta_keywords = fetch_first_row("select products.meta_keywords from products where products.id=#{p.id}")
-          p.meta_description = fetch_first_row("select products.meta_description from products where products.id=#{p.id}")
+        Spree::Product.all.each do |p|
+          p.name = fetch_first_row("select spree_products.name from spree_products where spree_products.id=#{p.id}")
+          p.description = fetch_first_row("select spree_products.description from spree_products where spree_products.id=#{p.id}")
+          p.meta_keywords = fetch_first_row("select spree_products.meta_keywords from spree_products where spree_products.id=#{p.id}")
+          p.meta_description = fetch_first_row("select spree_products.meta_description from spree_products where spree_products.id=#{p.id}")
           p.save!
         end
         puts "done."
 
         puts "updating taxonomy names..."
-        Taxonomy.all.each do |t|
-          t.name = fetch_first_row("select taxonomies.name from taxonomies where taxonomies.id=#{t.id}")
+        Spree::Taxonomy.all.each do |t|
+          t.name = fetch_first_row("select spree_taxonomies.name from spree_taxonomies where spree_taxonomies.id=#{t.id}")
           t.save!
         end
         puts "done."
 
         puts "updating taxon names and permalinks..."
-        Taxon.all.each do |t|
-          t.name = fetch_first_row("select taxons.name from taxons where taxons.id=#{t.id}")
+        Spree::Taxon.all.each do |t|
+          t.name = fetch_first_row("select spree_taxons.name from spree_taxons where spree_taxons.id=#{t.id}")
           t.save!
         end
         puts "done."
 
         puts "updating property presentations..."
-        Property.all.each do |p|
-          p.presentation = fetch_first_row("select properties.presentation from properties where properties.id=#{p.id}")
+        Spree::Property.all.each do |p|
+          p.presentation = fetch_first_row("select spree_properties.presentation from spree_properties where spree_properties.id=#{p.id}")
           p.save!
         end
         puts "done."
 
         puts "updating product property values..."
-        ProductProperty.all.each do |p|
-          p.value = fetch_first_row("select product_properties.value from product_properties where product_properties.id=#{p.id}")
+        Spree::ProductProperty.all.each do |p|
+          p.value = fetch_first_row("select spree_product_properties.value from spree_product_properties where spree_product_properties.id=#{p.id}")
           p.save!
         end
         puts "done."
 
         puts "updating prototype names..."
-        Prototype.all.each do |p|
-          p.name = fetch_first_row("select prototypes.name from prototypes where prototypes.id=#{p.id}")
+        Spree::Prototype.all.each do |p|
+          p.name = fetch_first_row("select spree_prototypes.name from spree_prototypes where spree_prototypes.id=#{p.id}")
           p.save!
         end
         puts "done."
 
         puts "updating option type presentations..."
 
-        OptionType.all.each do |p|
-          p.presentation = fetch_first_row("select option_types.presentation from option_types where option_types.id=#{p.id}")
+        Spree::OptionType.all.each do |p|
+          p.presentation = fetch_first_row("select spree_option_types.presentation from spree_option_types where spree_option_types.id=#{p.id}")
           p.save!
         end
         puts "done."
 
-        OptionValue.all.each do |p|
-          p.presentation = fetch_first_row("select option_values.presentation from option_values where option_values.id=#{p.id}")
+        Spree::OptionValue.all.each do |p|
+          p.presentation = fetch_first_row("select spree_option_values.presentation from spree_option_values where spree_option_values.id=#{p.id}")
           p.save!
         end
         puts "done."
